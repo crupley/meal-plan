@@ -108,7 +108,8 @@ Sessions started from the phone may push to a branch and open a pull request ins
 
 ### By hand
 
-Create `recipes/<Title>.cook`:
+Create `recipes/<file_name>.cook`, named after the title in lowercase with underscores between words
+(`recipes/black_bean_tacos.cook`):
 
 ```cooklang
 ---
@@ -122,7 +123,7 @@ Heat @olive oil{1%tbsp} in a #skillet{} and cook @onion{1}(diced) for ~{5%minute
 
 `@` marks an ingredient, `#` cookware and `~` a timer; see the
 [Cooklang specification](https://cooklang.org/docs/spec/). Check it with
-`cook recipe "recipes/<Title>.cook"`, then commit and push.
+`cook recipe recipes/<file_name>.cook`, then commit and push.
 
 ## Viewing recipes on iPhone
 

@@ -42,7 +42,10 @@ If nothing is missing, do not ask; just state the tags you chose.
 
 ## 3. Write the file
 
-Save as `recipes/<Title>.cook` (title case, spaces allowed, no slashes or colons). If a file with
+Save as `recipes/<file_name>.cook`, where the file name is the title in lowercase with words
+separated by underscores and all other punctuation dropped: "Minestrone-Style Bean Soup" becomes
+`recipes/minestrone_style_bean_soup.cook`. The readable name goes in the `title` metadata, which is
+what the planner displays, so `title` is required. If a file with
 that name exists, ask whether to replace it or save under a different name.
 
 ```cooklang
@@ -91,7 +94,7 @@ only when none fits. Alternative names for the same item go on one line separate
 
 ## 5. Check and save
 
-- If CookCLI is available: `cook recipe "recipes/<Title>.cook"` must parse without errors, and
+- If CookCLI is available: `cook recipe recipes/<file_name>.cook` must parse without errors, and
   `cook doctor aisle -b recipes` should report nothing missing. Without CookCLI (cloud sessions),
   re-read the file and check the syntax by eye.
 - Commit the recipe and the `aisle.conf` change together with a message like
