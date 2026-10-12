@@ -17,7 +17,7 @@ config/themes.json            the theme (recipe tag) for each day of the week
 site/                         the planner pages (plain HTML, CSS and JS)
 scripts/build.py              runs CookCLI over the recipes and builds _site/
 scripts/serve.py              local server; shopping lists come straight from CookCLI
-scripts/sync-icloud.sh        copies recipes to iCloud Drive for the iPhone app
+scripts/sync-icloud.sh        two-way sync with the iCloud Drive folder the iPhone app reads
 .github/workflows/pages.yml   builds and deploys the site on every push to main
 .claude/skills/add-recipe/    the Claude skill that adds recipes
 ```
@@ -136,14 +136,23 @@ files from a folder in iCloud Drive.
    scripts/sync-icloud.sh
    ```
 
-   It pulls the latest recipes from GitHub and copies `recipes/` and `config/` to
-   `iCloud Drive/Recipes`.
+   It pulls the latest recipes from GitHub, brings in any recipes added or edited in
+   `iCloud Drive/Recipes`, and copies `recipes/` and `config/` there.
 2. Install the Cooklang app on the iPhone and point it at the `Recipes` folder in iCloud Drive.
 3. Run the script again whenever recipes change.
 
-The copy is one way: edit recipes in this repository, not in the iCloud folder, because the script
-overwrites that folder. The repository itself should stay out of iCloud Drive, which can damage git
-repositories.
+The sync is two-way for recipes. A `.cook` file saved or edited in the iCloud folder (for example
+with the Files app on the phone) is copied into `recipes/`, committed and pushed on the next run,
+which also rebuilds the planner. Things to know:
+
+- Recipes added this way skip the `add-recipe` checks. Give them `servings` and `tags`, or they only
+  appear under **All recipes**, and add their ingredients to `config/aisle.conf`.
+- If a recipe changed in both places since the last sync, the script leaves both copies alone,
+  lists the file and exits with an error. Make the two copies identical and run it again.
+- Deleting a recipe only works from the repository; a file deleted in the iCloud folder comes back.
+- `config/` is copied one way, from the repository to iCloud.
+
+The repository itself should stay out of iCloud Drive, which can damage git repositories.
 
 To sync automatically every hour, so recipes added from the phone appear without touching the Mac,
 save this as `~/Library/LaunchAgents/com.crupley.meal-plan-sync.plist` and run
