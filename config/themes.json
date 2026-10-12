@@ -1,0 +1,9 @@
+{
+  "mon": { "label": "Pasta", "tag": "pasta" },
+  "tue": { "label": "Tacos", "tag": "tacos" },
+  "wed": { "label": "Soup", "tag": "soup" },
+  "thu": null,
+  "fri": null,
+  "sat": null,
+  "sun": null
+}

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meal Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="planner">
+  <header>
+    <h1>Meal Planner</h1>
+    <nav>
+      <a href="index.html" data-nav aria-current="page">Plan the week</a>
+      <a href="plan.html" data-nav>Meal plan</a>
+      <a href="shopping.html" data-nav>Shopping list</a>
+    </nav>
+  </header>
+  <main>
+    <label class="week">Week of
+      <input type="date" id="week">
+    </label>
+    <div id="days"></div>
+    <p class="actions">
+      <a class="button" href="plan.html" data-nav>View meal plan</a>
+      <a class="button" href="shopping.html" data-nav>View shopping list</a>
+      <button type="button" id="clear" class="quiet">Clear week</button>
+    </p>
+    <p id="status" class="note"></p>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

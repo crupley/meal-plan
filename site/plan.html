@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meal Plan</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="plan">
+  <header>
+    <h1>Meal Plan</h1>
+    <nav>
+      <a href="index.html" data-nav>Plan the week</a>
+      <a href="plan.html" data-nav aria-current="page">Meal plan</a>
+      <a href="shopping.html" data-nav>Shopping list</a>
+    </nav>
+  </header>
+  <main>
+    <h2 id="heading"></h2>
+    <table id="plan"></table>
+    <p class="actions">
+      <button type="button" onclick="print()">Print</button>
+    </p>
+    <p id="status" class="note"></p>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
