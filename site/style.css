@@ -86,6 +86,7 @@ table { width: 100%; border-collapse: collapse; }
 td, th { text-align: left; padding: .6rem .5rem; border-bottom: 1px solid var(--line); vertical-align: top; }
 th { width: 9rem; font-weight: 600; }
 td small, th small { display: block; color: var(--muted); font-weight: 400; }
+th small.theme { color: var(--accent); }
 .empty { color: var(--muted); }
 
 .aisle { margin-bottom: 1.25rem; }

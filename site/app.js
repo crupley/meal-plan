@@ -201,7 +201,7 @@ async function plannerPage() {
       controls.append(el("label", { className: "override" }, box, " All recipes"));
     }
 
-    const themeLabel = theme && theme.tag
+    const themeLabel = theme && (theme.label || theme.tag)
       ? el("span", { className: "theme" }, theme.label || theme.tag)
       : el("span", { className: "theme none" }, "Any recipe");
     const row = el("section", { className: "day" },
@@ -234,7 +234,9 @@ async function plannerPage() {
 // ---------- meal plan page ----------
 
 async function planPage() {
-  const recipes = await getJSON("data/recipes.json");
+  const [recipes, themes] = await Promise.all([
+    getJSON("data/recipes.json"), getJSON("data/themes.json"),
+  ]);
   const byId = new Map(recipes.map((r) => [r.id, r]));
   const plan = loadPlan();
   savePlan(plan);
@@ -246,9 +248,11 @@ async function planPage() {
     const cell = recipe
       ? el("td", {}, recipe.title, el("small", {}, servingsText(recipe, pick.scale)))
       : el("td", { className: "empty" }, pick ? `${pick.id} (recipe not found)` : "—");
-    return el("tr", {},
-      el("th", { scope: "row" }, name, el("small", {}, shortDate(dayDate(plan.week, index)))),
-      cell);
+    const head = el("th", { scope: "row" }, name,
+      el("small", {}, shortDate(dayDate(plan.week, index))));
+    const label = themes[key] && themes[key].label;
+    if (label) head.append(el("small", { className: "theme" }, label));
+    return el("tr", {}, head, cell);
   });
   document.getElementById("plan").replaceChildren(...rows);
 }

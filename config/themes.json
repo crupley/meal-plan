@@ -1,9 +1,9 @@
 {
-  "mon": { "label": "Pasta", "tag": "pasta" },
-  "tue": { "label": "Tacos", "tag": "tacos" },
-  "wed": { "label": "Soup", "tag": "soup" },
-  "thu": null,
-  "fri": null,
-  "sat": null,
-  "sun": null
+  "mon": { "label": "Meatless Mondays", "tag": "meatless" },
+  "tue": { "label": "Taco Tuesday", "tag": "tacos" },
+  "wed": { "label": "Wok Wednesday", "tag": "wok" },
+  "thu": { "label": "Leftover Thursday" },
+  "fri": { "label": "Fun Friday", "tag": "fun" },
+  "sat": { "label": "Sheet Pan Saturday", "tag": "sheet-pan" },
+  "sun": { "label": "Slow Cooker Sunday", "tag": "slow-cooker" }
 }
